@@ -1,271 +1,184 @@
-# Smart Email Assistant
+# 📧 Smart Email Assistant
 
-A fully local, AI-powered email management assistant that integrates with Microsoft Outlook to deliver intelligent email summarization, relevance filtering, priority score, and automated reply generation. All processing is performed entirely on your device using a locally hosted LLM (Ollama) — no external data sharing is involved, ensuring complete data privacy and security.
-## 🚀 Features
+**Smart Email Assistant** is a fully local AI-powered tool that helps you manage your Outlook inbox more efficiently. It summarizes emails, filters out irrelevant ones, scores urgency, and even drafts replies for you — all **locally** on your machine using [Ollama](https://ollama.ai/). **No internet or external API calls are used for AI tasks** — your data stays 100% private.
 
-- **Email Integration**: Seamless connection with Microsoft Outlook/Exchange
-- **AI-Powered Summarization**: Automatic email content summarization using Ollama phi-3 mini
-- **Relevance Filtering**: Intelligent spam and irrelevant email detection
-- **Smart Reply Generation**: Context-aware reply drafting with conversation history
-- **Live Email Monitoring**: Real-time processing of incoming emails
-- **Modern UI**: Responsive React dashboard with beautiful animations
-- **Reply Management**: In-app email composition and sending
-- **Thread Context**: Maintains conversation context for better replies
+---
 
-## 🛠 Technology Stack
+## 🔑 Why Local?
 
-**Backend:**
-- Flask (Python web framework)
-- SQLite (Local database)
-- Microsoft Graph API (Email integration)
-- Ollama (Local LLM inference)
+Unlike other email tools, **Smart Email Assistant runs entirely on your device**:
+- Uses [Ollama](https://ollama.ai/) to run LLMs locally
+- No email content ever leaves your machine
+- Perfect for privacy-conscious individuals and enterprises
 
-**Frontend:**
-- React 18 (UI framework)
-- Tailwind CSS (Styling)
+---
+
+## 🚀 Key Features
+
+- ✅ **Microsoft Outlook Integration**  
+- 🧠 **AI Summarization** with `phi-3-mini` (or any Ollama-supported model)  
+- 🗂️ **Inbox Relevance Scoring**: Filters out spam and low-priority emails  
+- ✍️ **Smart Reply Drafts**: Context-aware replies using thread history  
+- 🔁 **Live Monitoring**: Processes emails as they arrive  
+- 📊 **Modern UI**: Clean, responsive React dashboard with Tailwind CSS  
+- 📤 **In-App Reply & Send**  
+- 🧵 **Conversation Context Handling**
+
+---
+
+## ⚙️ Tech Stack
+
+**Backend**
+- Flask (Python)
+- SQLite
+- Microsoft Graph API
+- Ollama (LLM Inference)
+
+**Frontend**
+- React 18
+- Tailwind CSS
 - Framer Motion (Animations)
-- Axios (API communication)
+- Axios
 
-## 📋 Prerequisites
+---
 
-1. **Python 3.8+**
-2. **Node.js 16+**
-3. **Ollama** (for local AI inference)
-4. **Microsoft Azure App Registration** (for Outlook API access)
+## 📦 Requirements
 
-## 🔧 Installation & Setup
+- Python 3.8+
+- Node.js 16+
+- Ollama
+- Microsoft Azure App Registration
 
-### 1. Clone the Repository
+---
+
+## 🧪 Setup
+
+### 1. Clone the Repo
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourname/smart-email-assistant.git
 cd smart-email-assistant
 ```
 
-### 2. Install Ollama and AI Model
+### 2. Install Ollama
 
 ```bash
-# Install Ollama (visit https://ollama.ai for OS-specific instructions)
-# For Linux/macOS:
 curl -fsSL https://ollama.ai/install.sh | sh
-
-# Pull the phi-3 mini model
 ollama pull phi3:mini
-
-# Start Ollama service
 ollama serve
 ```
 
-### 3. Setup Microsoft Azure App Registration
+### 3. Setup Azure App Registration
 
-1. Go to [Azure Portal](https://portal.azure.com)
-2. Navigate to "App registrations" → "New registration"
-3. Configure:
-   - **Name**: Smart Email Assistant
-   - **Redirect URI**: `http://localhost:5000/auth/callback`
-   - **Account types**: Accounts in any organizational directory and personal Microsoft accounts
+- Go to [Azure Portal](https://portal.azure.com)
+- Register a new app and note down:
+  - Client ID
+  - Client Secret
+  - Redirect URI: `http://localhost:5000/auth/callback`
+- Add Graph API permissions:
+  - `Mail.Read`, `Mail.Send`, `Mail.ReadWrite`, `User.Read`
 
-4. Add API Permissions:
-   - Microsoft Graph → Delegated permissions:
-     - `Mail.Read`
-     - `Mail.Send`
-     - `Mail.ReadWrite`
-     - `User.Read`
+### 4. Configure Environment
 
-5. Generate Client Secret:
-   - Go to "Certificates & secrets" → "New client secret"
-   - Copy the secret value (you won't see it again!)
-
-6. Note down:
-   - Application (client) ID
-   - Client secret value
-
-### 4. Environment Configuration
-
-Create a `.env` file in the project root:
+Create `.env` in project root:
 
 ```env
-# Flask Configuration
-FLASK_SECRET_KEY=your_flask_secret_key_here
+# Flask
+FLASK_SECRET_KEY=your_secret
 
-# Microsoft Azure Configuration
-OUTLOOK_CLIENT_ID=your_azure_client_id_here
-OUTLOOK_CLIENT_SECRET=your_azure_client_secret_here
+# Microsoft Graph
+OUTLOOK_CLIENT_ID=xxxxx
+OUTLOOK_CLIENT_SECRET=xxxxx
 REDIRECT_URI=http://localhost:5000/auth/callback
+
+# Frontend
 FRONTEND_URL=http://localhost:3000
 
-# Optional: Ollama Configuration (defaults shown)
+# Ollama
 OLLAMA_BASE_URL=http://localhost:11434
 OLLAMA_MODEL=phi3:mini
 ```
 
-### 5. Backend Setup
+---
+
+## ⚙️ Running Locally
+
+### Backend (Terminal 1)
 
 ```bash
-# Navigate to backend directory
 cd backend
-
-# Create virtual environment
 python -m venv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 6. Frontend Setup
-
-```bash
-# Navigate to frontend directory
-cd frontend
-
-# Install dependencies
-npm install
-
-# Install additional Tailwind CSS plugins
-npm install -D @tailwindcss/typography @tailwindcss/forms @tailwindcss/aspect-ratio
-```
-
-## 🚀 Running the Application
-
-### Start the Backend (Terminal 1)
-
-```bash
-cd backend
 source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
 python app.py
 ```
 
-The backend will start on `http://localhost:5000`
-
-### Start the Frontend (Terminal 2)
+### Frontend (Terminal 2)
 
 ```bash
 cd frontend
-npm start
+npm install
+npm run start
 ```
 
-The frontend will start on `http://localhost:3000`
-
-### Ensure Ollama is Running (Terminal 3)
+### Ollama (Terminal 3)
 
 ```bash
 ollama serve
 ```
 
-## 🎯 Usage Instructions
+---
 
-### First Time Setup
+## 🧭 How to Use
 
-1. **Access the Application**: Open `http://localhost:3000`
-2. **Connect Email**: Click "Sign in with Microsoft" to authenticate
-3. **Verify Services**: Check that both Microsoft Auth and Ollama AI show green status
-4. **Sync Emails**: Click "Sync Emails" to fetch and process recent emails
-5. **Manage Emails**: View summaries, draft replies, and send responses
+1. Open `http://localhost:3000`
+2. Sign in with Microsoft
+3. Allow Graph API permissions
+4. Start syncing emails
+5. Use the dashboard to manage, summarize, and reply
 
-### Features Overview
-
-#### Email Management
-- **Dashboard View**: Grid or list view of processed emails
-- **Filtering**: Filter by all emails, needs reply, or already replied
-- **Search**: Search through email content, subjects, and senders
-- **Real-time Updates**: Automatic processing of new incoming emails
-
-#### AI Features
-- **Relevance Detection**: Automatically filters out spam and irrelevant emails
-- **Smart Summarization**: Bullet-point summaries of email content
-- **Context-Aware Replies**: Generates professional replies considering conversation history
-- **Reply Regeneration**: Generate new reply drafts if not satisfied
-
-#### Email Actions
-- **View Full Email**: Read complete email content with formatting
-- **Edit Replies**: Modify AI-generated replies before sending
-- **Send Replies**: Send responses directly from the application
-- **Track Status**: Visual indicators for replied/unreplied emails
+---
 
 ## 🔍 Troubleshooting
 
-### Common Issues
+- **Ollama not responding** → Run `ollama serve`
+- **Microsoft auth fails** → Check redirect URI and API permissions
+- **Slow AI generation** → Try smaller model or close unused apps
 
-1. **Ollama Not Running**
-   ```bash
-   # Check if Ollama is running
-   curl http://localhost:11434/api/tags
-   
-   # If not running, start it
-   ollama serve
-   ```
+---
 
-2. **Authentication Errors**
-   - Verify Azure app registration settings
-   - Check redirect URI matches exactly
-   - Ensure API permissions are granted and admin consented
+## 💡 Tips
 
-3. **Email Sync Issues**
-   - Check internet connection
-   - Verify Microsoft Graph API permissions
-   - Check browser console for detailed error messages
+- Set `OLLAMA_MODEL=llama3:8b` or another supported model for more advanced replies (if your hardware allows).
+- Customize filters or scoring logic in `backend/email_processing.py`.
 
-4. **AI Processing Slow**
-   - Ollama performance depends on hardware
-   - Consider using a smaller model for faster processing
-   - Check system resources (CPU/RAM usage)
+---
 
-### Debug Mode
+## 🔐 Privacy First
 
-Enable debug logging by setting environment variables:
+Your emails are:
+- Stored locally in SQLite
+- Processed entirely offline by Ollama
+- Never sent to any third-party servers
+
+> ✅ **Data privacy is a first-class citizen in this app.**
+
+---
+
+## 🧩 Contributing
+
+PRs are welcome! Here’s how:
 
 ```bash
-# Backend debugging
-export FLASK_DEBUG=1
-export FLASK_ENV=development
-
-# Frontend debugging
-export REACT_APP_DEBUG=1
+git checkout -b feature/my-new-feature
+git commit -am "Add some feature"
+git push origin feature/my-new-feature
 ```
 
-## 📊 Performance Optimization
+Then open a Pull Request.
 
-### Backend Optimization
-- **Concurrent Processing**: Emails are processed in parallel using ThreadPoolExecutor
-- **Database Indexing**: SQLite indexes on timestamp and reply status
-- **Caching**: Email content caching to avoid re-processing
-
-### Frontend Optimization
-- **Lazy Loading**: Components load on demand
-- **Virtual Scrolling**: Efficient handling of large email lists
-- **Optimistic Updates**: UI updates immediately for better UX
-
-## 🔒 Security Considerations
-
-- **Local Storage**: All email data stored locally in SQLite
-- **Token Security**: OAuth tokens stored in secure session storage
-- **API Rate Limiting**: Respects Microsoft Graph API rate limits
-- **Data Privacy**: No email data sent to external services (except Microsoft)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -am 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit a Pull Request
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License
-
-## 🆘 Support
-
-For issues and questions:
-1. Check the troubleshooting section above
-2. Search existing GitHub issues
-3. Create a new issue with detailed description and logs
-
-
-## Note **: This application processes emails locally using Ollama for maximum privacy and security. No email content is sent to external AI services.**
+[MIT License](LICENSE)
