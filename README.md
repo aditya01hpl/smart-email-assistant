@@ -269,4 +269,4 @@ For issues and questions:
 3. Create a new issue with detailed description and logs
 
 
-**Note**: This application processes emails locally using Ollama for maximum privacy and security. No email content is sent to external AI services.
+## Note **: This application processes emails locally using Ollama for maximum privacy and security. No email content is sent to external AI services.**
