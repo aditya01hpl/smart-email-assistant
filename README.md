@@ -1,7 +1,6 @@
 # Smart Email Assistant
 
-A comprehensive AI-powered email management tool that integrates with Microsoft Outlook to provide intelligent email summarization, relevance filtering, and automated reply generation using local LLM (Ollama).
-
+A fully local, AI-powered email management assistant that integrates with Microsoft Outlook to deliver intelligent email summarization, relevance filtering, priority score, and automated reply generation. All processing is performed entirely on your device using a locally hosted LLM (Ollama) — no external data sharing is involved, ensuring complete data privacy and security.
 ## 🚀 Features
 
 - **Email Integration**: Seamless connection with Microsoft Outlook/Exchange
