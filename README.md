@@ -9,7 +9,7 @@
 You can check the demo video of this project here:
 
 ```markdown
-[Watch the demo video on Google Drive]([https://drive.google.com/file/d/FILE_ID/view](https://drive.google.com/drive/folders/1YWAP6Ytd4UMt-jveZq9M1BHgpgqEo0iY?usp=sharing))
+[Watch the demo video on Google Drive](https://drive.google.com/drive/folders/1YWAP6Ytd4UMt-jveZq9M1BHgpgqEo0iY?usp=sharing)
 ```
 
 ---
