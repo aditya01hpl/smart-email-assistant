@@ -268,19 +268,5 @@ For issues and questions:
 2. Search existing GitHub issues
 3. Create a new issue with detailed description and logs
 
-## 🔮 Future Enhancements
-
-- [ ] Gmail integration support
-- [ ] Email templates and signatures
-- [ ] Advanced AI models integration
-- [ ] Email analytics and insights
-- [ ] Mobile application
-- [ ] Dark mode support
-- [ ] Multi-language support
-- [ ] Email scheduling
-- [ ] Advanced search and filtering
-- [ ] Integration with calendar and tasks
-
----
 
 **Note**: This application processes emails locally using Ollama for maximum privacy and security. No email content is sent to external AI services.
