@@ -1,0 +1,32 @@
+.email-html-content {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+.email-html-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.email-html-content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.email-html-content th, 
+.email-html-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.email-html-content th {
+  background-color: #f2f2f2;
+}
+
+.email-html-content blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 15px;
+  margin-left: 0;
+  color: #777;
+}
