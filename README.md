@@ -64,7 +64,7 @@ Unlike other email tools, **Smart Email Assistant runs entirely on your device**
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourname/smart-email-assistant.git
+git clone https://github.com/aditya01hpl/smart-email-assistant.git
 cd smart-email-assistant
 ```
 
@@ -157,7 +157,7 @@ ollama serve
 
 ## 💡 Tips
 
-- Set `OLLAMA_MODEL=llama3:8b` or another supported model for more advanced replies (if your hardware allows).
+- Set `OLLAMA_MODEL=phi3:mini` or another supported model for more advanced replies (if your hardware allows).
 - Customize filters or scoring logic in `backend/email_processing.py`.
 
 ---
